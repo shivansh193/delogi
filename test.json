@@ -1,0 +1,23 @@
+[
+    {
+      "username": "Rohan",
+      "companyName": "Cadbury",
+      "products": ["Dairy Milk", "DM Silk", "Nutties"]
+    },
+    {
+      "username": "Shivansh",
+      "companyName": "Cadbury",
+      "products": ["Dairy Milk", "DM Silk", "Nutties"]
+    },
+    {
+      "username": "Sanya",
+      "companyName": "Cadbury",
+      "products": ["Dairy Milk", "DM Silk", "Nutties"]
+    },
+    {
+      "username": "Yash",
+      "companyName": "Cadbury",
+      "products": ["Dairy Milk", "DM Silk", "Nutties"]
+    }
+  ]
+  

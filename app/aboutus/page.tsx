@@ -1,5 +1,8 @@
 import Navbar from "../components/navbar/Navbar";
+import USERS from "../../test.json";
+
 const About = () => {
+ 
   return (
     <div>
       <Navbar />
