@@ -3,7 +3,7 @@
 import { Html5QrcodeScanner } from "html5-qrcode"
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import Mensen from './geolocationer';
+import Locator from './geolocationer';
 
 const QrScanner = () => {
 
@@ -36,7 +36,7 @@ const QrScanner = () => {
         </div>
 
             {scanResult
-                ? <div> Success : <Link href={"http://" + scanResult}/> {scanResult} <Mensen /> </div>
+                ? <div> Success : <Link href={"http://" + scanResult}/> {scanResult} <Locator /> </div>
                 : <div id="reader"></div>
             }
 
