@@ -6,7 +6,7 @@ const Consumers = () => {
     <div>
       <Navbar />
   
-      <div className=" my-12 mx-12 "> <QrScanner/></div>
+      <div className=" my-12 mx-12+ "> <QrScanner/></div>
       
     </div>
   );

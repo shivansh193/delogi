@@ -2,12 +2,13 @@
     {
       "username": "Rohan",
       "companyName": "Cadbury",
-      "products": ["Dairy Milk", "DM Silk", "Nutties"]
+      "products": [{"name":"Dairy Milk", "productId":"001"},{"name":"DM Silk", "productId":"002"}]
+      
     },
     {
       "username": "Shivansh",
       "companyName": "Cadbury",
-      "products": ["Dairy Milk", "DM Silk", "Nutties"]
+      "products": [{"name":"Dairy Milk", "productId":"001"},{"name":"DM Silk", "productId":"002"}]
     },
     {
       "username": "Sanya",
