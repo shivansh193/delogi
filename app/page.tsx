@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import Navbar from "./components/navbar/Navbar";
 import QrScanner from "./components/qrScanner";
 
 const Home = () => {
+
   return (
     <div>
       <Navbar /> 
