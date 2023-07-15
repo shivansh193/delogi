@@ -1,29 +1,16 @@
-import { useRouter, usePageParams } from 'next/navigation';
+'use client'
+import { useRouter } from 'next/navigation';
 
 const ProductPage = () => {
-    const router = useRouter();
-    const { getParam } = usePageParams();
-  
-    const productId = getParam('productId');
+  const router = useRouter();
+  const productId = router.query.productId;
 
-  // Replace this with your actual data fetching logic
-  const getProductById = (productId: string) => {
-    // Simulating data fetching with the provided test JSON data
-    const jsonData = {
-      username: 'Rohan',
-      companyName: 'Cadbury',
-      products: [
-        { name: 'Dairy Milk', productId: '001' },
-        { name: 'DM Silk', productId: '002' },
-      ],
-    };
-
-    const product = jsonData.products.find((p) => p.productId === productId);
-
-    return product ? product.name : 'Product Not Found';
-  };
-
-  const productName = getProductById(productId as string);
+  if (productId) {
+    // The productId query parameter is defined
+  } else {
+    // The productId query parameter is not defined
+    return <div>Product ID not found</div>;
+  }
 
   return (
     <div>
