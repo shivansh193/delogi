@@ -1,7 +1,21 @@
+'use client'
 import Link from 'next/link';
 import Image from 'next/image';
+import * as fcl from "@onflow/fcl"
+import { useEffect, useState } from 'react';
+
+fcl.config({
+  "accessNode.api": "https://access-testnet.onflow.org",
+  "discovery.wallet": "https://fcl-discovery.onflow.org/testnet/authn",
+  
+})
 
 const Navbar = () => {
+  const [user, setUser] = useState({ loggedIn: false, addr:'' });
+  useEffect(() => {
+    fcl.currentUser().subscribe(setUser);
+  }, [])
+  
   return (
     <nav className="relative">
       <div className="absolute inset-0">
@@ -40,6 +54,7 @@ const Navbar = () => {
             <Link href="/contact">
               <span>Contact Us</span>
             </Link>
+            {!user.addr ? <button onClick={fcl.authenticate}>Login </button> : <button onClick={fcl.unauthenticate}>Logout</button> }
           </div>
         </div>
       </div>
