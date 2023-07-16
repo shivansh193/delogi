@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 
 
-const cityFinder = () => {
+const CityFinder = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [country, setCountry] = useState(null);
@@ -60,4 +60,4 @@ const cityFinder = () => {
   );
 };
 
-export default cityFinder;
+export default CityFinder;
