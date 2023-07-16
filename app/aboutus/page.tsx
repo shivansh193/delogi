@@ -4,6 +4,7 @@ import ImageCreator from "../components/imageContainer";
 
 const About = () => {
   const userName = USERS[0].products;
+  const imageData = (e : any) => { console.log(e);}
 
   return (
     <div>
@@ -11,7 +12,7 @@ const About = () => {
       <h1>About Us Page</h1>
 
       <div className="flex justify-center items-center h-screen">
-      <ImageCreator />
+      <ImageCreator/>
     </div>
     
     </div>

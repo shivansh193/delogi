@@ -1,20 +1,29 @@
 'use client'
+
 import { useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 
-const ImageCreator = ({ handleImageSave }) => {
+const ImageCreator = () => {
+
   const imageRef = useRef(null);
   const [generatedImage, setGeneratedImage] = useState('');
 
   const handlePrint = () => {
     const imageContainer = imageRef.current;
 
-    html2canvas(imageContainer).then((canvas) => {
+    if(imageContainer){
+        html2canvas(imageContainer).then((canvas) => {
       const dataUrl = canvas.toDataURL('image/jpeg');
 
       setGeneratedImage(dataUrl);
-      handleImageSave(dataUrl);
+    //   handleImageSave(dataUrl);
     });
+    }
+
+    else {
+        return undefined;
+    }
+    
   };
 
   return (
