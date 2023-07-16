@@ -1,5 +1,4 @@
-// NOTE: I deployed this to 0x04 in the playground
-import FungibleToken from 0x9a0766d93b6608b7
+import FungibleToken from "FungibleToken"
 
 pub contract FlowToken: FungibleToken {
 
