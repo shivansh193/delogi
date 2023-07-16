@@ -1,0 +1,24 @@
+{
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"mainnet": "access.mainnet.nodes.onflow.org:9000",
+		"sandboxnet": "access.sandboxnet.nodes.onflow.org:9000",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"emulator-account": {
+			"address": "f8d6e0586b0a20c7",
+			"key": "a39d716b19f2d0c7b1201dcb602074dee112293541e29d30ddd0c1089b268002"
+		},
+		"my-testnet-account": {
+			"address": "6fa21d12e9a34e8d",
+			"key": {
+				"type": "file",
+				"location": "my-testnet-account.pkey"
+			}
+		}
+	},
+	"contracts":{
+		"NonFungibleToken": "./"
+	}
+}

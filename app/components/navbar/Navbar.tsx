@@ -54,12 +54,23 @@ const Navbar = () => {
             <Link href="/contact">
               <span>Contact Us</span>
             </Link>
-            {!user.addr ? <button onClick={fcl.authenticate}>Login </button> : <button onClick={fcl.unauthenticate}>Logout</button> }
+            {!user.addr ? <button onClick={fcl.authenticate}>Login </button> : <><button onClick={fcl.unauthenticate}>Logout</button>
+              currentUser: {user.addr}
+            </> }
           </div>
         </div>
       </div>
     </nav>
   );
+
 };
 
 export default Navbar;
+
+
+// //Private Key              e4a2f6fba9d7b9d89cf4285c0e9b79e2e7842d96bae55bc754359359d6dae55d
+// Public Key               7d1b239184e716119e5998d0397661bc6728526f5714bb5bc25f74a8cbfb3e1605f2b960cc3e4dc73f521de20e04064b7607e46e71986ddf978138b280e61239       
+// Mnemonic                 labor coin rather feel fury priority recipe uncle hold 
+// tilt ribbon piano
+// Derivation Path          m/44'/539'/0'/0/0
+// Signature Algorithm      ECDSA_P256
