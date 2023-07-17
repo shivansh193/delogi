@@ -2,23 +2,37 @@
 	"networks": {
 		"emulator": "127.0.0.1:3569",
 		"mainnet": "access.mainnet.nodes.onflow.org:9000",
-		"sandboxnet": "access.sandboxnet.nodes.onflow.org:9000",
 		"testnet": "access.devnet.nodes.onflow.org:9000"
 	},
 	"accounts": {
 		"emulator-account": {
 			"address": "f8d6e0586b0a20c7",
-			"key": "a39d716b19f2d0c7b1201dcb602074dee112293541e29d30ddd0c1089b268002"
+			"key": "0d2de2cd5069f9220ca9a62526281c91cc15cd59f50b7295812d692641801bcc"
 		},
 		"my-testnet-account": {
-			"address": "6fa21d12e9a34e8d",
-			"key": {
-				"type": "file",
-				"location": "my-testnet-account.pkey"
-			}
+			"fromFile": "my-testnet-account.private.json"
 		}
-	},
-	"contracts":{
-		"NonFungibleToken": "./"
+	}, 
+	"contracts" : {
+		"FungibleToken": {
+			"source": "./cadence/contracts/FungibleToken.cdc",
+			"aliases": {
+			  "testnet": "0x9a0766d93b6608b7"
+			}
+		  },
+		  "NonFungibleToken": {
+			"source": "./cadence/contracts/NonFungibleToken.cdc",
+			"aliases": {
+			  "testnet": "0x631e88ae7f1d7c20"
+			}
+		  },
+		  "MyNFT": "./cadence/contracts/MyNFT.cdc",
+		  "FlowToken": "./cadence/contracts/FlowToken.cdc"
+		},
+		"deployments": {
+		  "testnet": {
+			"my-testnet-account": ["FungibleToken", "NonFungibleToken", "MyNFT", "FlowToken"]
+		  }
+		
 	}
 }

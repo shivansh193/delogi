@@ -1,4 +1,4 @@
-import FungibleToken from "FungibleToken"
+import FungibleToken from "FungibleToken.cdc"
 
 pub contract FlowToken: FungibleToken {
 
@@ -130,7 +130,7 @@ pub contract FlowToken: FungibleToken {
         //
         pub fun mintTokens(amount: UFix64): @FlowToken.Vault {
             pre {
-                amount > UFix64(0): "Amount minted must be greater than zero"
+                amount > 0.0: "Amount minted must be greater than zero"
                 amount <= self.allowedAmount: "Amount minted must be less than the allowed amount"
             }
             FlowToken.totalSupply = FlowToken.totalSupply + amount
@@ -164,14 +164,23 @@ pub contract FlowToken: FungibleToken {
             emit TokensBurned(amount: amount)
         }
     }
+    
+    pub fun createVault(): @FungibleToken.Vault {
+        return <-create Vault(balance: 1000.0)
+    }
 
     init() {
-        self.totalSupply = 0.0
+
+
+ self.totalSupply = 0.0
 
         // Create the Vault with the total supply of tokens and save it in storage
         //
         let vault <- create Vault(balance: self.totalSupply)
+        vault.deploy()
         self.account.save(<-vault, to: /storage/flowTokenVault)
+
+        // ...
 
         // Create a public capability to the stored Vault that only exposes
         // the `deposit` method through the `Receiver` interface
