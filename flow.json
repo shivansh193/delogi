@@ -14,12 +14,7 @@
 		}
 	}, 
 	"contracts" : {
-		"FungibleToken": {
-			"source": "./cadence/contracts/FungibleToken.cdc",
-			"aliases": {
-			  "testnet": "0x9a0766d93b6608b7"
-			}
-		  },
+		
 		  "NonFungibleToken": {
 			"source": "./cadence/contracts/NonFungibleToken.cdc",
 			"aliases": {
@@ -27,11 +22,11 @@
 			}
 		  },
 		  "MyNFT": "./cadence/contracts/MyNFT.cdc",
-		  "FlowToken": "./cadence/contracts/FlowToken.cdc"
+		  "DeLogiToken": "./cadence/contracts/DeLogiToken.cdc"
 		},
 		"deployments": {
 		  "testnet": {
-			"my-testnet-account": ["FungibleToken", "NonFungibleToken", "MyNFT", "FlowToken"]
+			"my-testnet-account": ["DeLogiToken", "NonFungibleToken", "MyNFT"]
 		  }
 		
 	}
