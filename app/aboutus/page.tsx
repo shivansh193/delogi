@@ -7,6 +7,7 @@ import * as fcl from "@onflow/fcl"
 import * as t from "@onflow/types"
 import {create} from 'ipfs-http-client';
 import { useState } from "react";
+import axios from "axios";
 const client = create("https://ipfs.infura.io:5001/api/v0");
 
 const About = () => {
@@ -16,31 +17,63 @@ const About = () => {
   const [file, setFile] = useState<File | null>(null);
 
 
-
   const mint = async () => {
 
-    try {
-      const added = await client.add(file)
-      const hash = added.path;
+    if (file) {
+        try {
 
-      const transactionId = await fcl.send([
-        fcl.transaction(mintNFT),
-        fcl.args([
-          fcl.arg(hash, t.String),
-          fcl.arg(nameOfNFT, t.String)
-        ]),
-        fcl.payer(fcl.authz),
-        fcl.proposer(fcl.authz),
-        fcl.authorizations([fcl.authz]),
-        fcl.limit(9999)
-      ]).then(fcl.decode);
-  
-      console.log(transactionId);
-      return fcl.tx(transactionId).onceSealed();
-    } catch(error) {
-      console.log('Error uploading file: ', error);
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const resFile = await axios({
+                method: "post",
+                url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+                data: formData,
+                headers: {
+                    'pinata_api_key': "ec0dedbd0b82050c6f4a",
+                    'pinata_secret_api_key': "40942e9ea54dd8c7d4ad6a180fad26069cbf174240cb6cdb4d9687d724d14475",
+                    "Content-Type": "multipart/form-data"
+                },
+            });
+
+        const hash = `ipfs://${resFile.data.IpfsHash}`;
+         console.log(hash);
+         console.log(`ipfs://${resFile.data.IpfsHash}`)
+         const transactionId = await fcl.send([
+          fcl.transaction(mintNFT),
+          fcl.args([
+            fcl.arg(hash, t.String),
+            fcl.arg(nameOfNFT, t.String)
+          ]),
+          fcl.payer(fcl.authz),
+          fcl.proposer(fcl.authz),
+          fcl.authorizations([fcl.authz]),
+          fcl.limit(9999)
+        ]).then(fcl.decode);
+    
+        console.log(transactionId);
+        return fcl.tx(transactionId).onceSealed(); 
+//Take a look at your Pinata Pinned section, you will see a new file added to you list.   
+
+
+
+        } catch (error) {
+            console.log("Error sending File to IPFS: ")
+            console.log(error)
+        }
     }
-  }
+}
+  // const mint = async () => {
+
+  //   try {
+  //     const added = await client.add(file)
+  //     const hash = added.path;
+
+      
+  //   } catch(error) {
+  //     console.log('Error uploading file: ', error);
+  //   }
+  // }
 
 
 
@@ -67,3 +100,7 @@ const About = () => {
 };
 
 export default About;
+
+
+
+// 
