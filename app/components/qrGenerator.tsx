@@ -1,6 +1,7 @@
 'use client'
 import { useQRCode } from 'next-qrcode';
 
+
 const Gen=()=> {
   const { Canvas } = useQRCode();
 const productId="Hello"

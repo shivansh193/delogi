@@ -1,28 +1,27 @@
 'use client'
-
-import React, { useState, useEffect } from "react";
-
+import { useState, useEffect } from "react";
+import CityFinder from "./cityFinder";
 
 const Locator = () => {
-  
-  const [location, setLocation] = useState<Location>();
- 
+  const [location, setLocation] = useState<Location | null>(null);
+
   useEffect(() => {
     if ("geolocation" in navigator) {
-      // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
       navigator.geolocation.getCurrentPosition(({ coords }) => {
         const { latitude, longitude } = coords;
         setLocation({ latitude, longitude });
       });
     }
   }, []);
-  console.log(location);
-  const latitude=location?.latitude
-  const longitude=location?.longitude
+
   return (
     <div>
-        longitude: {longitude}
-        latitude: {latitude}
+      {location && (
+        <CityFinder
+          latitude={location.latitude}
+          longitude={location.longitude}
+        />
+      )}
     </div>
   );
 };
@@ -31,4 +30,5 @@ interface Location {
   latitude: number;
   longitude: number;
 }
-export default Locator
+
+export default Locator;

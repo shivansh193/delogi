@@ -4,6 +4,8 @@ import { Html5QrcodeScanner } from "html5-qrcode"
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Locator from './geolocationer';
+import CityFinder from "./cityFinder";
+import ImageCreator from "./imageContainer";
 
 const QrScanner = () => {
 
@@ -19,6 +21,7 @@ const QrScanner = () => {
         function success(result : any) {
             scanner.clear();
             setScanResult(result);
+            <ImageCreator />
         }
 
         function error(err : any) {
@@ -36,7 +39,7 @@ const QrScanner = () => {
         </div>
 
             {scanResult
-                ? <div> Success : <Link href={"http://" + scanResult}/> {scanResult} <Locator /> </div>
+                ? <div> Success : <Link href={"http://" + scanResult}/> {scanResult}  </div>
                 : <div id="reader"></div>
             }
 

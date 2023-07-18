@@ -1,0 +1,26 @@
+{
+	"networks": {
+		"emulator": "127.0.0.1:3569",
+		"mainnet": "access.mainnet.nodes.onflow.org:9000",
+		"testnet": "access.devnet.nodes.onflow.org:9000"
+	},
+	"accounts": {
+		"emulator-account": {
+			"address": "f8d6e0586b0a20c7",
+			"key": "0d2de2cd5069f9220ca9a62526281c91cc15cd59f50b7295812d692641801bcc"
+		},
+		"my-testnet-account": {
+			"address": "0x9cf220cf69ea1a63",
+			"key" : "69beb536c6eaac26dac38062cd625627f35bd0563de7d4906a653975b1e3ef3b"
+		}
+	}, 
+	"contracts" : {
+		"listings" : "./cadence/contracts/listings.cdc"
+		},
+		"deployments": {
+		  "testnet": {
+			"my-testnet-account": ["listings"]
+		  }
+		
+	}
+}
